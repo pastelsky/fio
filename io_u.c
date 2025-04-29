@@ -9,8 +9,9 @@
 #include "lib/axmap.h"
 #include "err.h"
 #include "lib/pow2.h"
-#include "minmax.h"
+#include "lib/fls.h"
 #include "zbd.h"
+#include "dir_blocks.h"
 
 struct io_completion_data {
 	int nr;				/* input */
@@ -26,6 +27,11 @@ struct io_completion_data {
  */
 static bool random_map_free(struct fio_file *f, const uint64_t block)
 {
+	struct thread_data *td = f->engine_data;
+
+	if (td && td->o.targ_dir && !is_block_in_targ_dir(td, f, block))
+		return false;
+
 	return !axmap_isset(f->io_axmap, block);
 }
 

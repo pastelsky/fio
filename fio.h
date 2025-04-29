@@ -296,6 +296,8 @@ struct thread_data {
 
 	struct thread_io_list *vstate;
 
+	void *dir_blocks_info; /* For targ-dir block tracking */
+
 	int shm_id;
 
 	/*

@@ -98,210 +98,216 @@ static bool did_arg;
  */
 static struct option l_opts[FIO_NR_OPTIONS] = {
 	{
-		.name		= (char *) "output",
-		.has_arg	= required_argument,
-		.val		= 'o' | FIO_CLIENT_FLAG,
+		.name = (char *)"output",
+		.has_arg = required_argument,
+		.val = 'o' | FIO_CLIENT_FLAG,
 	},
 	{
-		.name		= (char *) "latency-log",
-		.has_arg	= required_argument,
-		.val		= 'l' | FIO_CLIENT_FLAG,
+		.name = (char *)"latency-log",
+		.has_arg = required_argument,
+		.val = 'l' | FIO_CLIENT_FLAG,
 	},
 	{
-		.name		= (char *) "bandwidth-log",
-		.has_arg	= no_argument,
-		.val		= 'b' | FIO_CLIENT_FLAG,
+		.name = (char *)"bandwidth-log",
+		.has_arg = no_argument,
+		.val = 'b' | FIO_CLIENT_FLAG,
 	},
 	{
-		.name		= (char *) "minimal",
-		.has_arg	= no_argument,
-		.val		= 'm' | FIO_CLIENT_FLAG,
+		.name = (char *)"minimal",
+		.has_arg = no_argument,
+		.val = 'm' | FIO_CLIENT_FLAG,
 	},
 	{
-		.name		= (char *) "output-format",
-		.has_arg	= required_argument,
-		.val		= 'F' | FIO_CLIENT_FLAG,
+		.name = (char *)"output-format",
+		.has_arg = required_argument,
+		.val = 'F' | FIO_CLIENT_FLAG,
 	},
 	{
-		.name		= (char *) "append-terse",
-		.has_arg	= optional_argument,
-		.val		= 'f',
+		.name = (char *)"append-terse",
+		.has_arg = optional_argument,
+		.val = 'f',
 	},
 	{
-		.name		= (char *) "version",
-		.has_arg	= no_argument,
-		.val		= 'v' | FIO_CLIENT_FLAG,
+		.name = (char *)"version",
+		.has_arg = no_argument,
+		.val = 'v' | FIO_CLIENT_FLAG,
 	},
 	{
-		.name		= (char *) "help",
-		.has_arg	= no_argument,
-		.val		= 'h' | FIO_CLIENT_FLAG,
+		.name = (char *)"help",
+		.has_arg = no_argument,
+		.val = 'h' | FIO_CLIENT_FLAG,
 	},
 	{
-		.name		= (char *) "cmdhelp",
-		.has_arg	= optional_argument,
-		.val		= 'c' | FIO_CLIENT_FLAG,
+		.name = (char *)"cmdhelp",
+		.has_arg = optional_argument,
+		.val = 'c' | FIO_CLIENT_FLAG,
 	},
 	{
-		.name		= (char *) "enghelp",
-		.has_arg	= optional_argument,
-		.val		= 'i' | FIO_CLIENT_FLAG,
+		.name = (char *)"enghelp",
+		.has_arg = optional_argument,
+		.val = 'i' | FIO_CLIENT_FLAG,
 	},
 	{
-		.name		= (char *) "showcmd",
-		.has_arg	= no_argument,
-		.val		= 's' | FIO_CLIENT_FLAG,
+		.name = (char *)"showcmd",
+		.has_arg = no_argument,
+		.val = 's' | FIO_CLIENT_FLAG,
 	},
 	{
-		.name		= (char *) "readonly",
-		.has_arg	= no_argument,
-		.val		= 'r' | FIO_CLIENT_FLAG,
+		.name = (char *)"readonly",
+		.has_arg = no_argument,
+		.val = 'r' | FIO_CLIENT_FLAG,
 	},
 	{
-		.name		= (char *) "eta",
-		.has_arg	= required_argument,
-		.val		= 'e' | FIO_CLIENT_FLAG,
+		.name = (char *)"eta",
+		.has_arg = required_argument,
+		.val = 'e' | FIO_CLIENT_FLAG,
 	},
 	{
-		.name		= (char *) "eta-interval",
-		.has_arg	= required_argument,
-		.val		= 'O' | FIO_CLIENT_FLAG,
+		.name = (char *)"eta-interval",
+		.has_arg = required_argument,
+		.val = 'O' | FIO_CLIENT_FLAG,
 	},
 	{
-		.name		= (char *) "eta-newline",
-		.has_arg	= required_argument,
-		.val		= 'E' | FIO_CLIENT_FLAG,
+		.name = (char *)"eta-newline",
+		.has_arg = required_argument,
+		.val = 'E' | FIO_CLIENT_FLAG,
 	},
 	{
-		.name		= (char *) "debug",
-		.has_arg	= required_argument,
-		.val		= 'd' | FIO_CLIENT_FLAG,
+		.name = (char *)"debug",
+		.has_arg = required_argument,
+		.val = 'd' | FIO_CLIENT_FLAG,
 	},
 	{
-		.name		= (char *) "parse-only",
-		.has_arg	= no_argument,
-		.val		= 'P' | FIO_CLIENT_FLAG,
+		.name = (char *)"parse-only",
+		.has_arg = no_argument,
+		.val = 'P' | FIO_CLIENT_FLAG,
 	},
 	{
-		.name		= (char *) "section",
-		.has_arg	= required_argument,
-		.val		= 'x' | FIO_CLIENT_FLAG,
+		.name = (char *)"section",
+		.has_arg = required_argument,
+		.val = 'x' | FIO_CLIENT_FLAG,
 	},
 #ifdef CONFIG_ZLIB
 	{
-		.name		= (char *) "inflate-log",
-		.has_arg	= required_argument,
-		.val		= 'X' | FIO_CLIENT_FLAG,
+		.name = (char *)"inflate-log",
+		.has_arg = required_argument,
+		.val = 'X' | FIO_CLIENT_FLAG,
 	},
 #endif
 	{
-		.name		= (char *) "alloc-size",
-		.has_arg	= required_argument,
-		.val		= 'a' | FIO_CLIENT_FLAG,
+		.name = (char *)"alloc-size",
+		.has_arg = required_argument,
+		.val = 'a' | FIO_CLIENT_FLAG,
 	},
 	{
-		.name		= (char *) "profile",
-		.has_arg	= required_argument,
-		.val		= 'p' | FIO_CLIENT_FLAG,
+		.name = (char *)"profile",
+		.has_arg = required_argument,
+		.val = 'p' | FIO_CLIENT_FLAG,
 	},
 	{
-		.name		= (char *) "warnings-fatal",
-		.has_arg	= no_argument,
-		.val		= 'w' | FIO_CLIENT_FLAG,
+		.name = (char *)"warnings-fatal",
+		.has_arg = no_argument,
+		.val = 'w' | FIO_CLIENT_FLAG,
 	},
 	{
-		.name		= (char *) "max-jobs",
-		.has_arg	= required_argument,
-		.val		= 'j' | FIO_CLIENT_FLAG,
+		.name = (char *)"max-jobs",
+		.has_arg = required_argument,
+		.val = 'j' | FIO_CLIENT_FLAG,
 	},
 	{
-		.name		= (char *) "terse-version",
-		.has_arg	= required_argument,
-		.val		= 'V' | FIO_CLIENT_FLAG,
+		.name = (char *)"terse-version",
+		.has_arg = required_argument,
+		.val = 'V' | FIO_CLIENT_FLAG,
 	},
 	{
-		.name		= (char *) "server",
-		.has_arg	= optional_argument,
-		.val		= 'S',
+		.name = (char *)"server",
+		.has_arg = optional_argument,
+		.val = 'S',
 	},
 #ifdef WIN32
 	{
-		.name		= (char *) "server-internal",
-		.has_arg	= required_argument,
-		.val		= 'N',
+		.name = (char *)"server-internal",
+		.has_arg = required_argument,
+		.val = 'N',
 	},
 #endif
-	{	.name		= (char *) "daemonize",
-		.has_arg	= required_argument,
-		.val		= 'D',
+	{
+		.name = (char *)"daemonize",
+		.has_arg = required_argument,
+		.val = 'D',
 	},
 	{
-		.name		= (char *) "client",
-		.has_arg	= required_argument,
-		.val		= 'C',
+		.name = (char *)"client",
+		.has_arg = required_argument,
+		.val = 'C',
 	},
 	{
-		.name		= (char *) "remote-config",
-		.has_arg	= required_argument,
-		.val		= 'R',
+		.name = (char *)"remote-config",
+		.has_arg = required_argument,
+		.val = 'R',
 	},
 	{
-		.name		= (char *) "cpuclock-test",
-		.has_arg	= no_argument,
-		.val		= 'T',
+		.name = (char *)"cpuclock-test",
+		.has_arg = no_argument,
+		.val = 'T',
 	},
 	{
-		.name		= (char *) "crctest",
-		.has_arg	= optional_argument,
-		.val		= 'G',
+		.name = (char *)"crctest",
+		.has_arg = optional_argument,
+		.val = 'G',
 	},
 	{
-		.name		= (char *) "memcpytest",
-		.has_arg	= optional_argument,
-		.val		= 'M',
+		.name = (char *)"memcpytest",
+		.has_arg = optional_argument,
+		.val = 'M',
 	},
 	{
-		.name		= (char *) "idle-prof",
-		.has_arg	= required_argument,
-		.val		= 'I',
+		.name = (char *)"idle-prof",
+		.has_arg = required_argument,
+		.val = 'I',
 	},
 	{
-		.name		= (char *) "status-interval",
-		.has_arg	= required_argument,
-		.val		= 'L' | FIO_CLIENT_FLAG,
+		.name = (char *)"status-interval",
+		.has_arg = required_argument,
+		.val = 'L' | FIO_CLIENT_FLAG,
 	},
 	{
-		.name		= (char *) "trigger-file",
-		.has_arg	= required_argument,
-		.val		= 'W',
+		.name = (char *)"trigger-file",
+		.has_arg = required_argument,
+		.val = 'W',
 	},
 	{
-		.name		= (char *) "trigger-timeout",
-		.has_arg	= required_argument,
-		.val		= 'B',
+		.name = (char *)"trigger-timeout",
+		.has_arg = required_argument,
+		.val = 'B',
 	},
 	{
-		.name		= (char *) "trigger",
-		.has_arg	= required_argument,
-		.val		= 'H',
+		.name = (char *)"trigger",
+		.has_arg = required_argument,
+		.val = 'H',
 	},
 	{
-		.name		= (char *) "trigger-remote",
-		.has_arg	= required_argument,
-		.val		= 'J',
+		.name = (char *)"trigger-remote",
+		.has_arg = required_argument,
+		.val = 'J',
 	},
 	{
-		.name		= (char *) "aux-path",
-		.has_arg	= required_argument,
-		.val		= 'K',
+		.name = (char *)"aux-path",
+		.has_arg = required_argument,
+		.val = 'K',
 	},
 	{
-		.name		= (char *) "merge-blktrace-only",
-		.has_arg	= no_argument,
-		.val		= 'A' | FIO_CLIENT_FLAG,
+		.name = (char *)"targ-dir",
+		.has_arg = required_argument,
+		.val = 'Z',
 	},
 	{
-		.name		= NULL,
+		.name = (char *)"merge-blktrace-only",
+		.has_arg = no_argument,
+		.val = 'A' | FIO_CLIENT_FLAG,
+	},
+	{
+		.name = NULL,
 	},
 };
 
@@ -2389,6 +2395,7 @@ static void usage(const char *name)
 	printf("  --trigger=cmd\t\tSet this command as local trigger\n");
 	printf("  --trigger-remote=cmd\tSet this command as remote trigger\n");
 	printf("  --aux-path=path\tUse this path for fio state generated files\n");
+	printf("  --targ-dir=dir\tTarget directory to find blocks for when reading\n");
 	printf("\nFio was written by Jens Axboe <axboe@kernel.dk>\n");
 }
 
@@ -3061,6 +3068,14 @@ int parse_cmd_line(int argc, char *argv[], int client_type)
 				free(aux_path);
 			aux_path = strdup(optarg);
 			break;
+		case 'Z':
+		{
+			struct thread_data *td = get_new_job(false, &def_thread, false, NULL);
+			if (!td)
+				break;
+			td->o.targ_dir = strdup(optarg);
+			break;
+		}
 		case 'B':
 			if (check_str_time(optarg, &trigger_timeout, 1)) {
 				log_err("fio: failed parsing time %s\n", optarg);

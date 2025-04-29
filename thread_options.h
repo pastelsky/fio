@@ -79,6 +79,7 @@ struct thread_options {
 	char *name;
 	char *wait_for;
 	char *directory;
+	char *targ_dir;
 	char *filename;
 	char *filename_format;
 	char *opendir;
@@ -413,6 +414,7 @@ struct thread_options_pack {
 	uint8_t name[FIO_TOP_STR_MAX];
 	uint8_t wait_for[FIO_TOP_STR_MAX];
 	uint8_t directory[FIO_TOP_STR_MAX];
+	uint8_t targ_dir[FIO_TOP_STR_MAX];
 	uint8_t filename[FIO_TOP_STR_MAX];
 	uint8_t filename_format[FIO_TOP_STR_MAX];
 	uint8_t opendir[FIO_TOP_STR_MAX];
